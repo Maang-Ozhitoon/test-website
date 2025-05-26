@@ -2,27 +2,27 @@ const familyData = {
   "nodes": [
   {
     "key": 1,
-    "name": "Name 1",
+    "name": "Name 1"
   },
   {
     "key": 2,
-    "name": "Name 2",
+    "name": "Name 2"
   },
   {
     "key": 3,
-    "name": "Name 3",
+    "name": "Name 3"
   },
   {
     "key": 4,
-    "name": "Name 4",
+    "name": "Name 4"
   },
   {
     "key": 5,
-    "name": "Name 5",
+    "name": "Name 5"
   },
   {
     "key": 6,
-    "name": "Name 6",
+    "name": "Name 6"
   },
   {
     "key": 7,

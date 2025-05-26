@@ -15,19 +15,12 @@
     textarea, input { width: 100%; padding: 8px; margin-top: 5px; }
     button { margin-top: 15px; padding: 10px 15px; }
   </style>
-  
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  
-  <script>
-    (function () {
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your actual EmailJS public key
-    })();
-  </script>
+
 </head>
 
 <body>
   <div class="topnav">
-    <a href="/family-tree.html">Family Tree</a>
+    <a href="index.html">Family Tree</a>
   </div>
 
   <main style="padding: 20px;">
@@ -71,44 +64,6 @@
     } else {
       profileDiv.innerHTML = "<p>Person not found.</p>";
     }
-
-    document.getElementById("infoForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const message = document.getElementById("message").value.trim();
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-
-      if (!message || !name || !email) {
-        alert("All fields are required.");
-        return;
-      }
-
-      const templateParams = {
-        message: message,
-        from_name: name,
-        reply_to: email,
-        person_id: id
-      };
-
-      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
-        .then(() => {
-          alert("Your message has been sent successfully.");
-        }, (error) => {
-          alert("Failed to send message: " + error.text);
-        });
-
-      fetch("http://localhost:3000/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(templateParams)
-      })
-        .then(response => response.json())
-        .then(data => console.log("Saved to DB:", data))
-        .catch(error => console.error("DB Error:", error));
-
-      this.reset();
-    });
   </script>
   </main>
 </body>
