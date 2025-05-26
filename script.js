@@ -18,7 +18,10 @@ function init() {
         movable: false,
         click: (e, node) => {
           const personId = node.data.key;
-          window.location.href = `profile.html?id=${personId}`;
+
+          // Dynamically determine current folder
+          const currentFolder = window.location.pathname.split('/').filter(Boolean).slice(-2, -1)[0];
+          window.location.href = `/${currentFolder}/profile.html?id=${personId}`;
         }
       },
       $(go.Panel, "Auto",
@@ -37,7 +40,6 @@ function init() {
       $("TreeExpanderButton")
     );
 
-
   // Link template
   myDiagram.linkTemplate =
     $(go.Link,
@@ -48,5 +50,4 @@ function init() {
 
   // Load model
   myDiagram.model = new go.GraphLinksModel(familyData.nodes, familyData.links);
-
 }
