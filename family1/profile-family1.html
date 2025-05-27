@@ -50,16 +50,18 @@
     const id = params.get("id");
 
     const detailedPages = [1, 2, 5, 7];
-
+    
     const profileDiv = document.getElementById("profile");
 
     if (id) {
       if (detailedPages.includes(Number(id))) {
         window.location.href = `profile/profile${id}.html`;
       } else {
+        document.getElementById("mainContent").style.display = "block";
         profileDiv.innerHTML = `<h2>Name ${id}</h2><p>More information to come.</p>`;
       }
     } else {
+      document.getElementById("mainContent").style.display = "block";
       profileDiv.innerHTML = "<p>Person not found.</p>";
     }
   </script>
