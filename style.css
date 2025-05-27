@@ -24,7 +24,84 @@
   background-color: grey;
 }
 
+/* Base Reset & Layout */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0px;
-  }
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2b5d80; /* watery blue background */
+    color: #e0eaf1;
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* Header */
+h1 {
+    background-color: #0d3555; /* deep navy header */
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    font-size: 2.5rem;
+    margin-top: 0;
+}
+
+/* Preamble Section */
+.preamble {
+    background-color: #3b729b;
+    padding: 20px;
+    border-radius: 0 0 12px 12px;
+    margin-bottom: 30px;
+}
+
+.preamble h2,
+.family-list h2 {
+    color: #16394f;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+ul li {
+    margin-bottom: 8px;
+}
+
+/* Privacy Notice */
+.notice {
+    font-weight: bold;
+    color: #16394f;
+    font-size: 1.1rem;
+    margin-top: 15px;
+}
+
+/* Family Tree Links */
+a {
+    color: #79bfff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #a6d4ff;
+    text-decoration: underline;
+}
+
+/* Section Headings */
+.family-list {
+    padding: 20px;
+    background-color: #3b729b;
+    border-radius: 12px;
+}
+
+/* Divider Line */
+hr {
+    border: none;
+    border-top: 1px solid #1a4b6e;
+    margin: 20px 0;
+}
+
