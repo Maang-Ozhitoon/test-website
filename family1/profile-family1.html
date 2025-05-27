@@ -46,22 +46,16 @@
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
 
-    const people = {
-      1: { name: "Name 1", bio: ""},
-      2: { name: "Name 2", bio: ""},
-      3: { name: "Name 3", bio: ""},
-      4: { name: "Name 4", bio: ""},
-      5: { name: "Name 5", bio: ""},
-      6: { name: "Name 6", bio: "T"},
-      7: { name: "Name 7", bio: ""},
-      8: { name: "Name 8", bio: ""},
-    };
+    const detailedPages = [1, 2, 5, 7];
 
-    const person = people[id];
     const profileDiv = document.getElementById("profile");
 
-    if (person) {
-      profileDiv.innerHTML = `<h2>${person.name}</h2><p>${person.bio}</p>`;
+    if (id) {
+      if (detailedPages.includes(Number(id))) {
+        window.location.href = `profile/profile${id}.html`;
+      } else {
+        profileDiv.innerHTML = `<h2>Name ${id}</h2><p>More information to come.</p>`;
+      }
     } else {
       profileDiv.innerHTML = "<p>Person not found.</p>";
     }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile 1 - Name 1</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .topnav a { margin-right: 15px; }
+  </style>
+</head>
+<body>
+
+  <div class="topnav">
+    <a href="../index.html">Home</a>
+    <a href="../family1/ft1.html">Family Tree</a>
+  </div>
+
+  <main>
+    <h1>Name 1</h1>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut diam euismod, sagittis magna nec, vehicula sapien. 
+      Sed congue lorem vitae nisl tristique, at bibendum arcu rutrum. Morbi nec orci in justo pulvinar porttitor. 
+      Integer lacinia eros et ante pretium, nec fermentum turpis ullamcorper. Vestibulum eu gravida erat. 
+      Sed in mi sed erat porttitor volutpat. Aenean et ligula sed nibh tincidunt gravida.
+    </p>
+
+    <p>
+      Proin vehicula lorem sit amet massa porta, nec lobortis sem dignissim. Suspendisse potenti. 
+      Nam vel tincidunt erat. Quisque viverra turpis nec tellus gravida, sed lacinia eros efficitur. 
+      Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+    </p>
+  </main>
+
+</body>
+</html>
