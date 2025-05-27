@@ -21,7 +21,7 @@ function init() {
 
           // Dynamically determine current folder
           const currentFolder = window.location.pathname.split('/').filter(Boolean).slice(-2, -1)[0];
-          window.location.href = `${currentFolder}/profile-${currentFolder}.html?id=${personId}`;
+          window.location.href = `profile-${currentFolder}.html?id=${personId}`;
         }
       },
       $(go.Panel, "Auto",
