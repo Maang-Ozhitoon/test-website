@@ -105,3 +105,24 @@ hr {
     margin: 20px 0;
 }
 
+/* Search Box */
+.search-box {
+    padding: 20px;
+    background-color: #3b729b;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.search.box input {
+    width: 70%;
+    padding: 8px;
+    margin-right: 10px;
+}
+
+.search-box button {
+    padding: 8px 12px;
+    background-color: #0d3555;
+    color: white;
+    border: none;
+    cursor: pointer;
+}

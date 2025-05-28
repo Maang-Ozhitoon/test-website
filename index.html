@@ -23,6 +23,13 @@
         </div>
     </div>
 
+    <div class="search-box">
+        <h2>Search for a Name</h2>
+        <input type="text" id="searchInput" placeholder="Enter a name.."/>
+        <button onclick="performSearch()">Search</button>
+        <div id="searchResult"></div>
+    </div>
+
     <!-- Family Tree & Links -->
     <div class="family-list">
         <h2>List of Family Trees</h2>
@@ -41,6 +48,45 @@
             <li>Family 12</li>
         </ul>
     </div>
+
+    <script>
+  const datasets = [
+    { path: 'family1/ft1-info.js', family: 'family1', profilePage: 'profile-family1.html' },
+    // Add more families here
+    ];
+
+  async function performSearch() {
+    const input = document.getElementById('searchInput').value.trim().toLowerCase();
+    const resultDiv = document.getElementById('searchResult');
+    resultDiv.innerHTML = 'Searching...';
+
+    for (const data of datasets) {
+      const script = document.createElement('script');
+      script.src = data.path;
+      document.head.appendChild(script);
+
+      await new Promise(resolve => {
+        script.onload = resolve;
+        script.onerror = () => resolve(); // Skip if fails to load
+      });
+
+      if (typeof familyData !== 'undefined') {
+        const match = familyData.nodes.find(person => person.name.toLowerCase().includes(input));
+        if (match) {
+          window.location.href = `${data.family}/${data.profilePage}?id=${match.key}`;
+          return;
+        }
+      }
+
+      // Clean up
+      delete window.familyData;
+    }
+
+    resultDiv.innerHTML = 'No matching name found.';
+  }
+  
+</script>
+
 </body>
 
 </html>
