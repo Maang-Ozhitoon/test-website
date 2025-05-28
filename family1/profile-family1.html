@@ -20,6 +20,8 @@
 </head>
 
 <body>
+  <body style="display: none;">
+  
   <div class="topnav">
     <a href="../index.html">Home</a>
     <a href="ft1.html">Family Tree</a>
@@ -48,21 +50,19 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const id = params.get("id");
-
-    const detailedPages = [1, 2, 5, 7];
     
+    const detailedPages = [1, 2, 5, 7];
     const profileDiv = document.getElementById("profile");
-
-    if (id) {
-      if (detailedPages.includes(Number(id))) {
-        window.location.href = `profile/profile${id}.html`;
-      } else {
-        document.getElementById("mainContent").style.display = "block";
-        profileDiv.innerHTML = `<h2>Name ${id}</h2><p>More information to come.</p>`;
-      }
+    
+    if (id && detailedPages.includes(Number(id))) {
+      window.location.replace(`profile/profile${id}.html`);
     } else {
-      document.getElementById("mainContent").style.display = "block";
-      profileDiv.innerHTML = "<p>Person not found.</p>";
+      document.body.style.display = "block";
+      if (id) {
+        profileDiv.innerHTML = `<h2>Name ${id}</h2><p>More information to come.</p>`;
+      } else {
+        profileDiv.innerHTML = "<p>Person not found.</p>";
+      }
     }
   </script>
   </main>
