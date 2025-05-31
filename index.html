@@ -50,43 +50,59 @@
     </div>
 
     <script>
-  const datasets = [
-    { path: 'family1/ft1-info.js', family: 'family1', profilePage: 'profile-family1.html' },
-    // Add more families here
-    ];
+      const datasets = [
+        { path: 'family1/ft1-info.js', family: 'family1', profilePage: 'profile-family1.html' },
+        // Add more families here
+        ];
+    
+      async function performSearch() {
+        const input = document.getElementById('searchInput').value.trim().toLowerCase();
+        const resultDiv = document.getElementById('searchResult');
+        resultDiv.innerHTML = 'Searching...';
 
-  async function performSearch() {
-    const input = document.getElementById('searchInput').value.trim().toLowerCase();
-    const resultDiv = document.getElementById('searchResult');
-    resultDiv.innerHTML = 'Searching...';
+        let results = [];
 
-    for (const data of datasets) {
-      const script = document.createElement('script');
-      script.src = data.path;
-      document.head.appendChild(script);
+        for (const data of datasets) {
+          const script = document.createElement('script');
+          script.src = data.path;
+          document.head.appendChild(script);
 
-      await new Promise(resolve => {
-        script.onload = resolve;
-        script.onerror = () => resolve(); // Skip if fails to load
-      });
+          await new Promise(resolve => {
+            script.onload = resolve;
+            script.onerror = () => resolve();
+          });
 
-      if (typeof familyData !== 'undefined') {
-        const match = familyData.nodes.find(person => person.name.toLowerCase().includes(input));
-        if (match) {
-          window.location.href = `${data.family}/${data.profilePage}?id=${match.key}`;
-          return;
+        if (typeof familyData !== 'undefined') {
+          familyData.nodes.forEach(person => {
+            if (person.name.toLowerCase().includes(input)) {
+              results.push({
+                name: person.name,
+                id: person.key,
+                family: data.family,
+                profilePage: data.profilePage
+              });
+            }
+          });
         }
+
+        delete window.familyData;
       }
 
-      // Clean up
-      delete window.familyData;
+      if (results.length > 0) {
+        resultDiv.innerHTML = `
+          <p>Found ${results.length} result(s):</p>
+          <ul>
+            ${results.map(r =>
+              `<li><a href="${r.family}/${r.profilePage}?id=${r.id}">${r.name} (ID: ${r.id})</a></li>`
+            ).join('')}
+          </ul>
+        `;
+      } else {
+        resultDiv.innerHTML = 'No matching name found.';
+      }
     }
-
-    resultDiv.innerHTML = 'No matching name found.';
-  }
-  
-</script>
-
+  </script>
+    
 </body>
 
 </html>
